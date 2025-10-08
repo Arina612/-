@@ -8,10 +8,8 @@ from telegram.ext import (
     ContextTypes,
 )
 
-# состояния разговора
 GENRE, MOOD, DURATION, RESULT = range(4)
 
-# база данных фильмов (25 фильмов)
 movies_db = [
     {"title": "Крестный отец", "genre": "криминал", "mood": "напряжённый", "duration": "длинный"},
     {"title": "Побег из Шоушенка", "genre": "драма", "mood": "добрый", "duration": "длинный"},
@@ -193,7 +191,6 @@ def main() -> None:
 
     application.add_handler(conv_handler)
 
-    # Обработчик для любых сообщений вне диалога
     application.add_handler(MessageHandler(filters.ALL & ~filters.COMMAND, handle_unexpected_message))
 
     application.run_polling()
